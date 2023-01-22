@@ -18,6 +18,12 @@ a {
     color: currentColor;
 }
 
+.title {
+    font-size: 1.8rem;
+    font-weight: 500;
+    padding: 2rem 0;
+}
+
 .navbar {
     position: fixed;
     background-color: #fff;
@@ -32,31 +38,39 @@ a {
 .navbar__container {
     padding: 0 1rem;
     max-width: 1200px;
-    height: 50px;
+    height: 75px;
     margin: 0 auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
     
 }
-@media screen and (min-width: 900px) {
-    .navbar__container {
-        padding: 0;
-    }
-}
+
 .navbar__wrapper {
     margin: 0 auto;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 5px;
+    gap: 25px;
     list-style-type: none;
 }
 .navbar__item {
     font-size: .8em;
-    padding: .4rem;
+    position: relative;
+}
+.navbar__item--active::after {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    content: '';
+    position: absolute;
+    width: 100%;
+    margin-top: 10px ;
+    border: 2px solid #222;
+    border-radius: .2rem;
 }
 .navbar__item--cta {
+    padding: .8rem;
     background-color: #222;
     color: #fff;
     border-radius: .2rem;
@@ -70,13 +84,14 @@ a {
     align-items: center;
     justify-content: center;
     list-style-type: none;
-    gap: 5px;
+    gap: 15px;
 }
 
 .container {
     max-width: 1200px;
     margin: 0 auto;
-    padding-top: 70px;
+    min-height: 120vh;
+    padding: 100px 1rem ;
 }
 
 
@@ -90,6 +105,7 @@ a {
 }
 
 .card {
+    cursor: pointer;
     border-radius: .2rem;
     margin: 10px;
     padding: 20px;
