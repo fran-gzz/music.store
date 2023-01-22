@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom"
 
 
-export const ProductCard = ({ id, nombre, precio }) => {
+export const ProductCard = ({ id, nombre, precio, imagen }) => {
 
-    const imagen = `/src/assets/${ id }.webp`
+    
 
     return (
         <Link className="card" to={`/producto/${ id }`}>
