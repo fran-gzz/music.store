@@ -8,7 +8,7 @@ export const ProductDetails = () => {
     
     const producto = getProductById( id );
     
-    const image = `/src/assets/${ id }.webp`
+    const image = `/assets/${ id }.webp`
 
     return (
         <div className="product">
