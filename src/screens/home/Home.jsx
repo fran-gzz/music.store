@@ -1,11 +1,12 @@
+import { ProductList } from "../../components"
 
-export const Home = ({ usuario, subtitulo }) => {
+
+export const Home = () => {
     return (
-        <>
-            <section>
-                <h1>Bienvenido, {usuario ? usuario : 'usuario'}.</h1>
-                <p>{subtitulo}</p>
-            </section>
+        <>  
+            <h1>Todos los productos</h1>
+            <ProductList type='instrumento'/>
+            <ProductList type='efecto'/>
         </>
     )
 }

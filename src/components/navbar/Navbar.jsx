@@ -5,19 +5,16 @@ export const Navbar = () => {
     return (
         <header className="navbar"> 
             <nav className="navbar__container">
-                <a href="#" className="navbar__brand">music.store</a>
+                <a href="#" className="navbar__brand">guitar.store</a>
                 <ul className="navbar__wrapper">
                     <li className="navbar__item">
                         <a href="#">Inicio</a>
                     </li>
                     <li className="navbar__item">
-                       <a href="#">Productos</a>
+                       <a href="#">Guitarras</a>
                     </li>
                     <li className="navbar__item">
-                        <a href="#">Contacto</a>
-                    </li>
-                    <li className="navbar__item">
-                        <a href="#">Blog</a>
+                        <a href="#">Pedales de efecto</a>
                     </li>
                 </ul>
                 <ul className="navbar__user">
