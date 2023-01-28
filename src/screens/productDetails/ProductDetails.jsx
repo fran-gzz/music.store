@@ -9,7 +9,7 @@ export const ProductDetails = () => {
     const producto = useMemo( () => getProductById( id ), [ id ]);
 
     return (
-        <div className="product">
+        <div className="product animate__animated animate__fadeIn">
             <div className="product__image">
                 <img src={producto.imagen} alt={producto.nombre} />
             </div>
