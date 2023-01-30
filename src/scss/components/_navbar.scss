@@ -1,0 +1,112 @@
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 99;
+    background-color: $primary;
+    height: 60px;
+    box-shadow: $shadow;
+    color: #fff;
+    @include flex;
+    &__container {
+        font-size: .8em;
+        @include container;
+        @include flex( row, space-between, center );
+    }
+    &__brand {
+        font-size: 1.2em;
+        font-weight: 800;
+        color: currentColor;
+        gap: 10px;
+        @include flex;
+    }
+    &__links {
+        transition: $transition;
+        position: absolute;
+        top: 0;
+        right: -100%;
+        z-index: -1;
+        background-color: $primary;
+        border-bottom-left-radius: $radius;
+        border-bottom-right-radius: $radius;
+        padding: 0 25px;
+        box-shadow: $shadow;
+        @include size( 40vh, 100% );
+        @include flex( column, center, flex-start );
+        @include responsive( tablet ){
+            z-index: 1;
+            right: unset;
+            position: relative;
+            gap: 25px;
+            margin: 0 auto;
+            box-shadow: unset;
+            @include size( 100%, unset );
+            @include flex( row, space-between, center );
+        }
+        &--open { right: 0; }
+    }
+
+    &__link {
+        margin: 12px 0;
+        color: currentColor;
+        @include responsive( tablet ){
+            margin: 0;
+            position: relative;
+            transition: $transition;
+        }
+        &::before {
+            content: '';
+            background-color: currentColor;
+            bottom: -8px;
+            left: 0;
+            position: absolute;
+            transform: scaleX( 0 );
+            transform-origin: bottom right;
+            @include size( 2px, 100%);
+            transition: transform .2s ease-in-out;
+        }
+        &:hover::before {
+            transform: scaleX( 1 );
+            transform-origin: bottom left;
+        }
+        &--active {
+            position: relative;
+            &::after {
+                border-radius: .2rem;
+                content: '';
+                bottom: -8px;
+                left: 0;
+                position: absolute;
+                background-color: currentColor;
+                @include size( 2px, 100%);
+            }
+
+        }
+    }
+    &__cta {
+        padding: .5rem;
+        background-color: #fff;
+        color: $text-color;
+        border-radius: $radius;
+        font-weight: 500;
+        transition: .2s ease-in-out all;
+        &:hover { background-color: rgb(229, 227, 227); }
+    }
+    &__main {
+        gap: 20px;
+        @include flex;
+        @include responsive( tablet ) {
+            gap: 15px;
+        }
+        i {
+            font-size: 1.8em;
+            color: currentColor;
+        }
+        #menu-button {
+            cursor: pointer;
+            @include responsive( tablet ) {
+                display: none;
+            }
+        }
+    }
+}

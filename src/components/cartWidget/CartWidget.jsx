@@ -1,6 +1,6 @@
 
 export const CartWidget = () => {
     return (
-        <i className="ri-shopping-cart-2-fill"></i>
+        <i className="ri-shopping-bag-fill"></i>
     )
 }

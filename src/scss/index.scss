@@ -62,102 +62,19 @@ body {
     padding: 2rem 0;
 }
 
-$primary: #20603c;
-$secondary: #FFDA77;
+$primary: #343434;
+
 
 $text-color: #343434;
+$accents: #363fe6;
 
 $shadow: 0px 0px 10px rgba( 0, 0, 0, .1 );
 
 $transition: all .5s ease-in-out;
 
+$radius: .2rem;
 
-.navbar {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    z-index: 99;
-    background-color: #fff;
-    padding: .5rem 0;
-    box-shadow: $shadow;
-    &__brand {
-        font-weight: 800;
-        color: $text-color;
-        @include flex;
-    }
-    &__container {
-        @include container;
-        @include flex( row, space-between, center );
-    }
-    &__links {
-        transition: $transition;
-        position: absolute;
-        top: 0;
-        right: -100%;
-        z-index: -1;
-        background-color: #fff;
-        border-bottom-left-radius: .2rem;
-        border-bottom-right-radius: .2rem;
-        padding: 0 25px;
-        box-shadow: $shadow;
-        @include size( 40vh, 100% );
-        @include flex( column, center, flex-start );
-        @include responsive( tablet ){
-            z-index: 1;
-            right: unset;
-            position: relative;
-            gap: 25px;
-            margin: 0 auto;
-            box-shadow: unset;
-            @include size( 100%, unset );
-            @include flex( row, space-between, center );
-        }
-        &--open { right: 0; }
-    }
-
-    &__link {
-        font-size: .8em;
-        margin: 12px 0;
-        @include responsive( tablet ){
-            margin: 0;
-            position: relative;
-            transition: $transition;
-        }
-        &::before {
-            content: '';
-            background-color: #343434;
-            bottom: -8px;
-            left: 0;
-            position: absolute;
-            transform: scaleX( 0 );
-            transform-origin: bottom right;
-            @include size( 2px, 100%);
-            transition: transform .2s ease-in-out;
-            border-radius: .2rem;
-        }
-        &:hover::before {
-            transform: scaleX( 1 );
-            transform-origin: bottom left;
-        }
-
-        &--active {
-            position: relative;
-            &::after {
-
-                border-radius: .2rem;
-                content: '';
-                bottom: -8px;
-                left: 0;
-                position: absolute;
-                background-color: #343434;
-                @include size( 2px, 100%);
-            }
-
-        }
-    }
-    
-    
-}
+@import './components/navbar';
 
 
 
@@ -165,49 +82,6 @@ $transition: all .5s ease-in-out;
 
 
 
-// .navbar__link:hover::after {
-//     display: flex;
-//     justify-content: center;
-//     align-items: center;
-//     content: '';
-//     position: absolute;
-//     width: 100%;
-//     margin-top: 10px ;
-//     border: 2px solid #222;
-//     border-radius: .2rem;
-// }
-
-.navbar__cta {
-    font-size: .8em;
-    padding: .5rem;
-    background-color: $primary;
-    color: #fff;
-    border-radius: .2rem;
-}
-.cartIcon {
-    height: 24px;
-    cursor: pointer;
-}
-.navbar__main {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    list-style-type: none;
-    gap: 25px; 
-    
-    i {
-        font-size: 1.6em;
-    }
-    @media screen and (min-width: 768px){
-        gap: 15px;     
-    }
-    #menu-button {
-        cursor: pointer;
-        @media screen and (min-width: 768px){
-            display: none;
-        }
-    }
-}
 
 
 
@@ -219,100 +93,110 @@ $transition: all .5s ease-in-out;
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 .grid {
     display: grid;
     grid-template-columns: 1fr;
-    @media screen and (min-width: 768px) {
+    gap: 10px;
+    @include responsive( tablet ){
         grid-template-columns: repeat(2, 1fr);
     }
-    @media screen and (min-width: 900px) {
+    @include responsive( desktop ){
         grid-template-columns: repeat(4, 1fr);
-    }
-    
+    }    
 }
+
+
 
 .card {
     cursor: pointer;
-    border-radius: .2rem;
-    margin: 10px;
-    padding: 20px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, .1);
-    transition: all .2s ease-in-out;
+    border-radius: $radius;
+    padding: 1rem;
+    box-shadow: $shadow;
     background-color: #fff;
+    color: $text-color;
+    @include responsive( desktop ) {
+        transition: all .2s ease-in-out;
+        &:hover { transform: scale(102%); }
+    }
+    &__price {
+        color: $text-color;
+        font-size: 1.6em;
+        font-weight: 500;
+    }    
+    &__title {
+        font-weight: 400;
+        font-size: .8em;
+        padding: .4rem 0 .8rem 0;
+    }
+    
+    &__shipping {
+        color: #00a650;
+        gap: 10px;
+        font-size: .8em;
+        @include flex( row, start, center );
+        &--icons {
+            font-size: 1.4em;
+            @include flex;
+        }
+    }
+    &__image {
+        object-fit: contain;
+        @include size( 350px, 100% );
+        @include responsive(  tablet  ) { height: 300px; }
+        @include responsive(  desktop ) { height: 250px; }
+    }
 }
-.card:hover {
-    transform: scale(102%);
-}
-.card__title {
-    border-top: 2px solid gray;
-    font-size: 1rem;
-    padding: 1rem 0;
-}
-.card__price {
-    color: green;
-    font-size: 1.4rem;
-}
-.card__image {
-    height: 400px;
-    width: 100%;
-    object-fit: cover;
-    padding: 1rem 0;
-}
+
+
+
+
 
 
 
 
 .product {
-    margin: 60px 0;
+    background-color: #fff;
+    margin-top: 20px;
+    border-radius: $radius;
+    overflow: hidden;
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-areas: 'image info info';
+    min-height: 85vh;
+    &__image {
+        padding: 2rem;
+        grid-area: image;
+        @include flex;
+        img {
+            object-fit: contain;
+            @include size(450px, 100%)
+        }
+    }
+    &__info {
+        padding: 1rem;
+        grid-area: info;
+    }
+    &__title {
+        color: $text-color;
+        font-size: 3rem;
+        margin-bottom: 10px;
+    }
+    &__price {
+        font-size: 2rem;
+        margin-bottom: 10px;
+        
+    }
+    &__subtitle {
+        margin-bottom: 20px;
+    }
+    
 }
-.product__image {
-    grid-area: image;
-}
-.product__image img{
-    object-fit: cover;
-    width: 100%;
-}
-.product__info {
-    padding: 1rem;
-    grid-area: info;
-}
-.product__title {
-    color: $primary;
-    font-size: 3rem;
-    margin-bottom: 20px;
-}
-.product__subtitle {
-    margin-bottom: 20px;
-}
-.product__price {
-    font-size: 2rem;
-    margin-bottom: 40px;
-    color: green;
-}
+
 
 .button--container {
     display: flex;
     gap: 10px;
-    margin-top: 40px;
+    margin: 25px 0;
 }
 .button {
     height: 45px;
@@ -321,18 +205,26 @@ $transition: all .5s ease-in-out;
     display: flex;
     justify-content: center;
     align-items: center;
-    border-color: rgba(0, 0, 0, .1);
-    border-radius: .2rem;
-    box-shadow: 0px 8px 10px rgba(0, 0, 0, .2);
+    border: none;
+    border-radius: $radius;
     cursor: pointer;
     transition: all .2s ease-in-out;
 }
-.button:hover{ 
-    transform: scale(104%);
-}
+
 .button--primary {
-    background-color: lightgreen;
+    background-color: $accents;
+    color: #fff;
+    min-width: 250px;
+    &:hover {
+        background-color: #055bbc;
+    }
 }
 .button--secondary {
     background-color: #eee;
+    border: 1px solid $accents;
+    &:hover {
+        
+        background-color: #c9c9c9;
+    }
+
 }

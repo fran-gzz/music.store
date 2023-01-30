@@ -16,7 +16,7 @@ export const Navbar = () => {
         <header className="navbar"> 
             <nav className="navbar__container">
                 <Link className="navbar__brand" to='/'>
-                <img src="https://img.icons8.com/ios-filled/30/222222/guitar-strings.png"/>
+                <img src="https://img.icons8.com/ios-filled/30/ffffff/guitar-strings.png"/>
                     <span>music.store</span>
                 </Link>
                 <ul className={`navbar__links ${ toggle ? 'navbar__links--open' :'' }`}>
