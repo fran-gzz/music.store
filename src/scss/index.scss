@@ -156,30 +156,42 @@ $radius: .2rem;
 
 .product {
     background-color: #fff;
-    margin-top: 20px;
+    margin: 20px 0;
     border-radius: $radius;
     overflow: hidden;
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-areas: 'image info info';
+    padding: 2rem;
+    grid-template-columns: 1fr;
+    grid-template-areas: 'image' 'info';
     min-height: 85vh;
+    @include responsive( tablet ) {
+        grid-template-columns: 1fr 1fr;
+        grid-template-areas: 'image info info';
+    }
     &__image {
-        padding: 2rem;
+        
         grid-area: image;
         @include flex;
         img {
             object-fit: contain;
-            @include size(450px, 100%)
+            @include size( 300px, 100% );
+            @include responsive( tablet ) {
+                @include size( 450px, 100% );
+            }
         }
     }
     &__info {
-        padding: 1rem;
         grid-area: info;
     }
     &__title {
         color: $text-color;
-        font-size: 3rem;
-        margin-bottom: 10px;
+        font-size: 2em;
+        margin: 20px 0;
+        @include responsive( tablet ) {
+            margin: 0;
+            margin-bottom: 10px;
+            font-size: 3em;
+        }
     }
     &__price {
         font-size: 2rem;
@@ -197,6 +209,7 @@ $radius: .2rem;
     display: flex;
     gap: 10px;
     margin: 25px 0;
+    width: 100%;
 }
 .button {
     height: 45px;
@@ -214,7 +227,7 @@ $radius: .2rem;
 .button--primary {
     background-color: $accents;
     color: #fff;
-    min-width: 250px;
+    min-width: 70%;
     &:hover {
         background-color: #055bbc;
     }
@@ -222,6 +235,7 @@ $radius: .2rem;
 .button--secondary {
     background-color: #eee;
     border: 1px solid $accents;
+    min-width: 30%;
     &:hover {
         
         background-color: #c9c9c9;

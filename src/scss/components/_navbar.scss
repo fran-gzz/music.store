@@ -23,7 +23,7 @@
     &__links {
         transition: $transition;
         position: absolute;
-        top: 0;
+        top: 40px;
         right: -100%;
         z-index: -1;
         background-color: $primary;
@@ -31,9 +31,10 @@
         border-bottom-right-radius: $radius;
         padding: 0 25px;
         box-shadow: $shadow;
-        @include size( 40vh, 100% );
+        @include size( 30vh, 100% );
         @include flex( column, center, flex-start );
         @include responsive( tablet ){
+            top: 0;
             z-index: 1;
             right: unset;
             position: relative;
