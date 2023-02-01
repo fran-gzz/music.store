@@ -72,7 +72,7 @@ $shadow: 0px 0px 10px rgba( 0, 0, 0, .1 );
 
 $transition: all .5s ease-in-out;
 
-$radius: .2rem;
+$radius: .4rem;
 
 
 @import './components/navbar';
@@ -109,6 +109,7 @@ $radius: .2rem;
 
 
 .card {
+    overflow: hidden;
     cursor: pointer;
     border-radius: $radius;
     padding: 1rem;
@@ -142,14 +143,82 @@ $radius: .2rem;
     }
     &__image {
         object-fit: contain;
-        @include size( 350px, 100% );
+        @include size( 300px, 100% );
         @include responsive(  tablet  ) { height: 300px; }
         @include responsive(  desktop ) { height: 250px; }
     }
+    &--nostock {
+        
+        position: relative;
+        &::after {
+            
+            position: absolute;
+            height: 100%;
+            width: 100%;
+            background-color: rgba($color: #fff, $alpha: .7);
+            content: 'SIN STOCK';
+            font-size: 1.4em;
+            @include flex;
+            top: 0;
+            left: 0;
+        }
+    }
+
 }
 
 
 
+
+
+
+
+.count {
+    margin: 20px 0;
+    width: 50%;
+    overflow:visible;
+    &__container {
+        overflow: hidden;
+        margin: 10px 0;
+        background-color: #fff;
+        border: 2px solid #c9c9c9;
+        border-radius: $radius;
+        display: flex;
+        flex-direction: row;
+        justify-content: start;
+        align-items: center;
+        box-shadow: $shadow;
+    }
+    &__label {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 2.5rem;
+        
+        
+    }
+    &__button {
+        background-color: #fff;
+        border: none;
+        cursor: pointer;
+        color: #055bbc;
+        font-size: 1.4em;
+        @include size (2.5rem, 4.5rem);
+    }
+}
+
+
+.danger {
+    margin: 20px 0;
+    width: 50%;
+    height: 60px;
+    @include flex( row, start );
+    color: #842029;
+    border: .1rem solid #f5c2c7;
+    border-radius: .2rem;
+    padding: 1rem;
+    background-color: #F8D7DA;
+}
 
 
 
@@ -187,7 +256,7 @@ $radius: .2rem;
     &__title {
         color: $text-color;
         font-size: 2em;
-        margin: 20px 0;
+        margin: 20px 0 5px 0;
         @include responsive( tablet ) {
             margin: 0;
             margin-bottom: 10px;
@@ -195,7 +264,7 @@ $radius: .2rem;
         }
     }
     &__price {
-        font-size: 2rem;
+        font-size: 1.6em;
         margin-bottom: 10px;
         
     }
@@ -214,7 +283,7 @@ $radius: .2rem;
 }
 .button {
     height: 45px;
-    min-width: 120px;
+    width: 100%;
     padding: 1rem;
     display: flex;
     justify-content: center;
@@ -228,7 +297,6 @@ $radius: .2rem;
 .button--primary {
     background-color: $accents;
     color: #fff;
-    min-width: 70%;
     &:hover {
         background-color: #055bbc;
     }
@@ -241,5 +309,32 @@ $radius: .2rem;
         
         background-color: #c9c9c9;
     }
+}
 
+
+
+.cart {
+    
+    border-radius: $radius;
+    
+    gap: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    &__item {
+        border: 2px solid #fff;
+        overflow: hidden;
+        width: 100%;
+        border-radius: $radius;
+        background-color: #fff;
+        box-shadow: $shadow;
+        display: flex;
+        justify-content: space-between;
+        align-items: center
+    }
+    &__img {
+        @include size(100px, 100px);
+        object-fit: contain;
+    }
 }

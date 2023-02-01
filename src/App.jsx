@@ -1,7 +1,9 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import { Navbar } from "./components";
-import { Home, Guitars, Effects, ProductDetails } from "./screens";
+import { Home, Guitars, Effects, ProductDetails, Cart } from "./screens";
 import ScrollToTop from './helpers/ScrollToTop';
+import { Provider } from './context';
+
 
 
 
@@ -9,6 +11,7 @@ import ScrollToTop from './helpers/ScrollToTop';
 const App = () => {
     return (
     <>
+    <Provider>
         <Router>
             <Navbar />
             <ScrollToTop />
@@ -18,9 +21,11 @@ const App = () => {
                     <Route exact path="/guitarras" element={<Guitars/>}/>
                     <Route exact path="/efectos" element={<Effects/>}/>
                     <Route path='/producto/:id' element={<ProductDetails/>}/>
+                    <Route path='/cart' element={ <Cart/> }/>
                 </Routes>
             </div>    
         </Router>
+    </Provider>
     </>
     )
 }
