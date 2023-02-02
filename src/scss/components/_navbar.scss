@@ -111,3 +111,20 @@
         }
     }
 }
+
+.cartwidget {
+    position: relative;
+    .sup {
+        padding: .5rem;
+        border: 2px solid #343434;       
+        border-radius: 100%;
+        background-color: red;
+        @include size(12px, 12px);
+        font-size: .8em;
+        font-weight: 600;
+        @include flex;
+        top: -10px;
+        right: -10px;
+        position: absolute;
+    }
+}

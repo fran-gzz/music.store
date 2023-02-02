@@ -6,7 +6,7 @@ export const Cart = () => {
 
 	if( cart.length > 0) {
 		return (
-			<>
+			<div className="animate__animated animate__fadeIn">
 				<h1 className="title">Carrito</h1>
 				<div className="cart">
 				{ cart.map( prod => 
@@ -17,11 +17,10 @@ export const Cart = () => {
 					</div>
 				)}
 				</div>
-				
-			</>
+			</div>
 		)
 	} else {
-		return <p className="danger">El carrito está vacío.</p>
+		return <p className="danger animate__animated animate__fadeIn">El carrito está vacío.</p>
 	}
 
 }
