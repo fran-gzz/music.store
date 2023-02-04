@@ -30,7 +30,7 @@ export const ItemCount = ({ stock = 0, initialState = 1, onAdd }) => {
                     </div>
                     
                     
-                    <button className="button button--primary" onClick={ handleButton }>Añadir a la bolsa</button>
+                    <button className="button button--primary w-100" onClick={ handleButton }>Añadir a la bolsa</button>
                 </div>
                 }
             

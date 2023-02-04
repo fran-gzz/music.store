@@ -2,7 +2,7 @@ import { useCartContext } from "../../context"
 
 export const Cart = () => {
 
-	const { cart } = useCartContext()
+	const { cart, removeFromCart } = useCartContext()
 
 	if( cart.length > 0) {
 		return (
@@ -12,8 +12,12 @@ export const Cart = () => {
 				{ cart.map( prod => 
 					<div key={prod.id} className='cart__item'>
 						<img src={prod.imagen} alt="" className="cart__img"/>
-						<h2 className="cart__title">{prod.nombre}</h2>
-						<p>{prod.cantidad}</p>
+						<div className="cart__info">
+							<h2 className="cart__title">{prod.nombre}</h2>
+							<p>{prod.cantidad}</p>
+							<p>{prod.precio}</p>
+						</div>
+						<button className="button button--danger" onClick={ () => removeFromCart(prod)}>Eliminar</button>
 					</div>
 				)}
 				</div>

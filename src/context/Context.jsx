@@ -1,5 +1,6 @@
 import { createContext, useContext, useState  } from "react";
-import Swal from "sweetalert2";
+import { showSuccessToast, showErrorToast } from "../components";
+
 
 
 const Context = createContext([]);
@@ -8,57 +9,38 @@ export const useCartContext = () => useContext(Context);
 
 
 export const Provider = ({ children }) => {
+
     const [ cart, setCart ] = useState([]);
 
     const addToCart = ( product ) => {
-
-        const existing = cart.find( i => i.nombre === product.nombre );
-
-        if ( !existing ) {
-            product.cantidad <= product.stock 
-            ? ( setCart([ ...cart, product ]),
-                Swal.fire({
-                    position: 'top-end',
-                    toast: true,
-                    title: 'Produto agregado',
-                    showConfirmButton: false,
-                    icon: 'success',
-                    timer: 2000,
-                    timerProgressBar: true,
-                })
-            ) : Swal.fire({
-                    title: 'Error',
-                    text: `No hay suficiente stock para agregar "${product.nombre}" al carrito`,
-                    icon: 'error'
-                })
-        }
-        ( existing.cantidad + product.cantidad <= existing.stock )
-            ? ( setCart(
-                cart.map( i =>  
+        const existing = cart.find( i => i.nombre === product.nombre) ;
+        !existing ? (
+            product.cantidad <= product.stock
+            ? (
+                setCart([...cart, product]),
+                showSuccessToast()
+            ) : showErrorToast(`No hay suficiente stock para agregar "${ product.nombre }" al carrito`)
+        ) : (
+            existing.cantidad + product.cantidad <= existing.stock
+            ? (
+                setCart(
+                    cart.map(i =>
                     i.nombre === product.nombre
-                        ? { ...i, cantidad: i.cantidad + product.cantidad } 
+                        ? { ...i, cantidad: i.cantidad + product.cantidad }
                         : i
-                    )),
-                Swal.fire({
-                    position: 'top-end',
-                    toast: true,
-                    title: 'Produto agregado',
-                    showConfirmButton: false,
-                    icon: 'success',
-                    timer: 2000,
-                    timerProgressBar: true,
-                }))
-            :   Swal.fire({
-                    title: 'Error',
-                    text: `No hay suficiente stock para agregar "${product.nombre}" al carrito`,
-                    icon: 'error'
-                })
-    }
-            
+                    )
+                ),
+                showSuccessToast()
+            ) : showErrorToast(`No hay suficiente stock para agregar "${ product.nombre }" al carrito`)
+        )
+    };
+        
+    const removeFromCart = ( product ) => setCart(  prevCart => prevCart.filter( i => i.nombre !== product.nombre ))
+
     return (
         <Context.Provider value={{
             cart,
-            addToCart
+            addToCart, removeFromCart
         }}>
             { children }
         </Context.Provider>
