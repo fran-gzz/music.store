@@ -14,8 +14,8 @@ export const Cart = () => {
 						<img src={prod.imagen} alt="" className="cart__img"/>
 						<div className="cart__info">
 							<h2 className="cart__title">{prod.nombre}</h2>
-							<p>{prod.cantidad}</p>
-							<p>{prod.precio}</p>
+							<p>Cantidad: {prod.cantidad}</p>
+							<p>Precio: {prod.precio}</p>
 						</div>
 						<button className="button button--danger" onClick={ () => removeFromCart(prod)}>Eliminar</button>
 					</div>
