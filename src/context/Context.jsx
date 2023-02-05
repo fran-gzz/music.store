@@ -35,7 +35,7 @@ export const Provider = ({ children }) => {
         )
     };
         
-    const removeFromCart = ( product ) => setCart(  prevCart => prevCart.filter( i => i.nombre !== product.nombre ))
+    const removeFromCart = ( nombre ) => setCart(  prevCart => prevCart.filter( i => i.nombre !== nombre ))
 
     return (
         <Context.Provider value={{

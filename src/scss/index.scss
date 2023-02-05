@@ -116,6 +116,7 @@ $radius: .4rem;
     box-shadow: $shadow;
     background-color: #fff;
     color: $text-color;
+    position: relative;
     @include responsive( desktop ) {
         transition: all .2s ease-in-out;
         &:hover { transform: scale(102%); }
@@ -127,11 +128,12 @@ $radius: .4rem;
     }    
     &__title {
         font-weight: 400;
-        font-size: .8em;
-        padding: .4rem 0 .8rem 0;
+        font-size: 1em;
+        padding-top: .4rem;
     }
     
     &__shipping {
+        margin: 10px 0;
         color: #00a650;
         gap: 10px;
         font-size: .8em;
@@ -148,10 +150,8 @@ $radius: .4rem;
         @include responsive(  desktop ) { height: 250px; }
     }
     &--nostock {
-        
         position: relative;
         &::after {
-            
             position: absolute;
             height: 100%;
             width: 100%;
@@ -163,9 +163,20 @@ $radius: .4rem;
             left: 0;
         }
     }
+    &__delete{
+        font-size: 3em;
+        position: absolute;
+        color: #DC3545;
+        right: 10px;
+    }
+    &__quantity {
+        font-size: 1em;
+        margin: 10px 0;
+    }
 
 }
 
+ 
 
 
 

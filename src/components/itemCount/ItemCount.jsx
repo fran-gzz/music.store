@@ -10,7 +10,7 @@ export const ItemCount = ({ stock = 0, initialState = 1, onAdd }) => {
     const handleButton = () => onAdd( count )
     
     return (
-        <div>
+        <>
             {
                 stock === 0 
                 ? <p className="danger">¡Sin stock!</p>
@@ -33,7 +33,6 @@ export const ItemCount = ({ stock = 0, initialState = 1, onAdd }) => {
                     <button className="button button--primary w-100" onClick={ handleButton }>Añadir a la bolsa</button>
                 </div>
                 }
-            
-        </div>
+        </>  
     )
 }
