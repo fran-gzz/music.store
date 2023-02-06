@@ -1,4 +1,5 @@
 import { useState } from "react"
+import { Link } from "react-router-dom";
 
 export const ItemCount = ({ stock = 0, initialState = 1, onAdd }) => {
 
@@ -29,8 +30,11 @@ export const ItemCount = ({ stock = 0, initialState = 1, onAdd }) => {
                         <button onClick={sumar} className='count__button'> + </button>
                     </div>
                     
-                    
-                    <button className="button button--primary w-100" onClick={ handleButton }>Añadir a la bolsa</button>
+                    <div className="button--container">
+                        <button className="button button--primary w-60" onClick={ handleButton }>Añadir al carrito</button>
+                        <Link className="button button--secondary w-40" to='/cart'>Ir al carrito</Link>
+                    </div>
+
                 </div>
                 }
         </>  

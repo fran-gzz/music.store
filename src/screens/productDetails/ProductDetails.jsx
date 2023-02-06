@@ -29,13 +29,20 @@ export const ProductDetails = () => {
                 <img src={producto.imagen} alt={producto.nombre} />
             </div>
             <div className="product__info">
-                <h1 className="product__title">{producto.nombre}</h1>
-                <p className="product__price">${producto.precio}</p>
+                <h1 className="product__title">
+                    {producto.nombre}
+                </h1>
+                <p className="product__price">
+                    ${producto.precio}
+                </p>
                 <ShippingWidget envio={producto.envio}/> 
                 <ItemCount stock={ producto.stock } initialState={ 1 } onAdd={ onAdd }/>
-                <h2 className="product__subtitle">Descripción</h2>
-                <p className="product__description">{producto.descripcion}</p>
-                
+                <h2 className="product__subtitle">
+                    Descripción
+                </h2>
+                <p className="product__description">
+                    {producto.descripcion}
+                </p>
             </div>
         </div>
     )
