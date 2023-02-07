@@ -13,34 +13,40 @@ export const Provider = ({ children }) => {
     const [ cart, setCart ] = useState([]);
 
     const addToCart = ( product ) => {
-        const existing = cart.find( i => i.nombre === product.nombre) ;
+        const existing = cart.find( i => i.name === product.name) ;
         !existing ? (
-            product.cantidad <= product.stock
+            product.quantity <= product.stock
             ? (
                 setCart([...cart, product]),
                 showSuccessToast()
-            ) : showErrorToast(`No hay suficiente stock para agregar "${ product.nombre }" al carrito`)
+            ) : showErrorToast(`No hay suficiente stock para agregar "${ product.name }" al carrito`)
         ) : (
-            existing.cantidad + product.cantidad <= existing.stock
+            existing.quantity + product.quantity <= existing.stock
             ? (
                 setCart(
                     cart.map(i =>
-                    i.nombre === product.nombre
-                        ? { ...i, cantidad: i.cantidad + product.cantidad }
+                    i.name === product.name
+                        ? { ...i, quantity: i.quantity + product.quantity }
                         : i
                     )
                 ),
                 showSuccessToast()
-            ) : showErrorToast(`No hay suficiente stock para agregar "${ product.nombre }" al carrito`)
+            ) : showErrorToast(`No hay suficiente stock para agregar "${ product.name }" al carrito`)
         )
     };
         
-    const removeFromCart = ( nombre ) => setCart(  prevCart => prevCart.filter( i => i.nombre !== nombre ))
+    const removeFromCart = ( name ) => setCart( products => products.filter( product => product.name !== name ))
+
+    const cleanCart = () => setCart([])
+
+
+    const totalQuantity = () => cart.reduce(( count, objProduct ) => count += objProduct.quantity, 0)
+    const totalPrice = () => cart.reduce(( count, objProduct ) => count += ( objProduct.quantity * objProduct.price ), 0)
 
     return (
         <Context.Provider value={{
-            cart,
-            addToCart, removeFromCart
+            cart, totalQuantity, totalPrice,
+            addToCart, removeFromCart, cleanCart
         }}>
             { children }
         </Context.Provider>

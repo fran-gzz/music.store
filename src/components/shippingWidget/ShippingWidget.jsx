@@ -1,6 +1,6 @@
 
-export const ShippingWidget = ({ envio = false }) =>
-    envio ? (
+export const ShippingWidget = ({ shipping = false }) =>
+    shipping ? (
     <div className="card__shipping">
         <div className="card__shipping--icons">
             <i className="ri-menu-3-line"></i>

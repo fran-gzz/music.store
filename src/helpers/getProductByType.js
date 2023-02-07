@@ -1,9 +1,9 @@
 import { products } from "../data/products";
 
-export const getProductByType = ( tipo ) => {
+export const getProductByType = ( type ) => {
     const validTypes = ['instrumento', 'efecto'];
-    if( !validTypes.includes( tipo )) {
-        throw new Error (`${tipo} no es un tipo de producto válido`)
+    if( !validTypes.includes( type )) {
+        throw new Error (`${ type } no es un tipo de producto válido`)
     }
-    return products.filter( product => product.tipo === tipo )
+    return products.filter( product => product.type === type )
 }

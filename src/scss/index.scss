@@ -102,6 +102,7 @@ $radius: .4rem;
     display: grid;
     grid-template-columns: 1fr;
     gap: 10px;
+    width: 100%;
     @include responsive( tablet ){
         grid-template-columns: repeat(2, 1fr);
     }
@@ -109,6 +110,9 @@ $radius: .4rem;
         grid-template-columns: repeat(4, 1fr);
     }    
 }
+
+
+
 
 
 
@@ -339,34 +343,62 @@ $radius: .4rem;
 
 
 .cart {
-    border-radius: $radius;
+    @include flex(column, center, flex-start);
+    margin-top: 50px;
+    position: relative;
     gap: 10px;
-    @include flex( column, center, flex-start );
-    &__item {
-        border: 2px solid #fff;
-        overflow: hidden;
+    @include responsive( tablet ) {
+        flex-direction: row;
+    }
+
+    &__grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 10px;
         width: 100%;
-        border-radius: $radius;
-        background-color: #fff;
-        box-shadow: $shadow;
-        display: flex;
-        justify-content: space-between;
-        align-items: center
+        @include responsive( tablet ){
+            grid-template-columns: repeat(2, 1fr);
+        }
+        @include responsive( desktop ){
+            grid-template-columns: repeat(3, 1fr);
+        }    
     }
-    &__img {
-        @include size(100px, 100px);
-        object-fit: contain;
-    }
+
     &__empty {
+        min-height: 40vh;
+        width: 60%;
+        margin: 0 auto;
         box-shadow: $shadow;
         border-radius: $radius;
         background-color: #fff;
         margin-top: 50px;
         padding: 2rem 0;
-        @include flex(column);
-        
-        
-        
-        
+        @include flex(column);    
+    }
+    
+}
+
+.resume {
+    top: 100px;
+    right: 0;
+    position: sticky;
+    border-radius: $radius;
+    background-color: #fff;
+    box-shadow: $shadow;
+    padding: 1rem;
+    %__container {
+        @include flex;
+    }
+    &__title {
+        font-size: 1.8rem;
+        font-weight: 500;
+        padding-bottom: 1rem;
+        color: $text-color;
+    }
+    &__text {
+        margin-bottom: 20px;
+
     }
 }
+
+

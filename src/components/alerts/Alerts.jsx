@@ -2,12 +2,10 @@ import Swal from "sweetalert2"
 
 export const showSuccessToast = () => {
     Swal.fire({
-        position: 'top-end',
-        toast: true,
+        position: 'center',
         title: 'Producto agregado',
-        showConfirmButton: false,
         icon: 'success',
-        timer: 2000,
+        timer: 900,
         timerProgressBar: true,
     });
 }

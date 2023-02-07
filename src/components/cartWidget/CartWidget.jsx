@@ -3,22 +3,16 @@ import { useCartContext } from "../../context"
 
 
 export const CartWidget = () => {
-    const { cart } = useCartContext();
 
-    if ( cart.length > 0 ) {
-        return (
-            <Link to='/cart' className="cartwidget">
-                <i className="ri-shopping-cart-2-fill"></i>
-                <sup className="sup">{ cart.length }</sup>
-            </Link>
-        )
-    } else {
-        return (
-            <Link to='/cart' className="cartwidget">
-                <i className="ri-shopping-cart-2-fill"></i>
-            </Link>
-        )
-    }
-
+    const { cart, totalQuantity } = useCartContext();
     
+    return (
+        <Link to='/cart' className="cartwidget">
+            <i className="ri-shopping-cart-2-fill"></i>
+            { cart.length > 0 
+                ? <sup className="sup">{ totalQuantity() }</sup> 
+                : null 
+            }
+        </Link>
+    )
 }

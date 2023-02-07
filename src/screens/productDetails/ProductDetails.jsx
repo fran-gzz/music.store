@@ -18,30 +18,30 @@ export const ProductDetails = () => {
 
     const { addToCart } = useCartContext();
     
-    const producto = useMemo( () => getProductById( id ), [ id ]);
+    const product = useMemo( () => getProductById( id ), [ id ]);
 
-    const onAdd = ( cant ) => addToCart({ ...producto, cantidad: cant })
+    const onAdd = ( qty ) => addToCart({ ...product, quantity: qty })
     
 
     return (
         <div className="product animate__animated animate__fadeIn">
             <div className="product__image">
-                <img src={producto.imagen} alt={producto.nombre} />
+                <img src={product.image} alt={product.name} />
             </div>
             <div className="product__info">
                 <h1 className="product__title">
-                    {producto.nombre}
+                    {product.name}
                 </h1>
                 <p className="product__price">
-                    ${producto.precio}
+                    ${product.price}
                 </p>
-                <ShippingWidget envio={producto.envio}/> 
-                <ItemCount stock={ producto.stock } initialState={ 1 } onAdd={ onAdd }/>
+                <ShippingWidget shipping={product.shipping}/> 
+                <ItemCount stock={ product.stock } onAdd={ onAdd }/>
                 <h2 className="product__subtitle">
                     Descripción
                 </h2>
                 <p className="product__description">
-                    {producto.descripcion}
+                    {product.description}
                 </p>
             </div>
         </div>

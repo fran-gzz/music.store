@@ -4,48 +4,48 @@ import { ShippingWidget } from "../../components"
 export const ProductCard = (
     { 
         id, 
-        nombre, 
-        precio, 
-        imagen,
-        envio,
+        name, 
+        price, 
+        image,
+        shipping,
         stock,
-        cantidad,
+        quantity,
         isInCart = false,
         handleButton 
     }) =>
     isInCart ? (
             <div className='card'>
-                <i className="ri-close-fill card__delete" onClick={() => handleButton(nombre)}></i>
+                <i className="ri-close-fill card__delete" onClick={() => handleButton( name )}></i>
 
-                <img className="card__image" src={imagen} alt={nombre} />
+                <img className="card__image" src={ image } alt={ name } />
 
                 <p className="card__price">
-                    ${precio}
+                    ${ price }
                 </p>
 
                 <h2 className="card__title">
-                    {nombre}
+                    { name }
                 </h2>
 
                 <p className="card__quantity">
-                    Cantidad: {cantidad}
+                    Cantidad: { quantity }
                 </p>
 
-                <ShippingWidget envio={envio}/>
+                <ShippingWidget shipping={ shipping }/>
 
-                <Link className="button button--primary" to={`/producto/${id}`}>
+                <Link className="button button--primary" to={`/producto/${ id }`}>
                     Ver producto
                 </Link>
             </div>
         ) : (
-            <Link className={stock > 0 ? 'card' : 'card card--nostock'} to={`/producto/${id}`}>
-                <img className="card__image" src={imagen} alt={nombre} />
+            <Link className={stock > 0 ? 'card' : 'card card--nostock'} to={`/producto/${ id }`}>
+                <img className="card__image" src={ image } alt={ name } />
                 <p className="card__price">
-                    ${precio}
+                    ${ price }
                 </p>
                 <h2 className="card__title">
-                    {nombre}
+                    { name }
                 </h2>
-                <ShippingWidget envio={envio} />
+                <ShippingWidget shipping={ shipping } />
             </Link>
         );
