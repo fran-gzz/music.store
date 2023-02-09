@@ -21,7 +21,7 @@ export const Navbar = () => {
                         <NavLink 
                             key={ id }
                             className={({ isActive }) => isActive ? "navbar__link navbar__link--active" : "navbar__link "}
-                            to={ data.link }
+                            to={`/${ data.type }`}
                         >
                             { data.text }
                         </NavLink>

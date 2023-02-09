@@ -1,14 +1,10 @@
 export const navData = [
     {
-        link: '/',
-        text: 'Inicio'
-    }, 
-    {
-        link: '/guitarras',
+        type: 'guitarras',
         text: 'Guitarras'
     }, 
     {
-        link: '/efectos', 
+        type: 'efectos', 
         text: 'Pedales de efecto'
     }
 

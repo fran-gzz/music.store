@@ -1,6 +1,21 @@
-import { ProductList } from "../../components"
+// import { useState, useEffect } from "react"
+// import { ProductList } from "../../components"
+
+// import { getItems } from "../../firebase/config"
+
 
 export const Home = () => {
+    
+    // const [ products, setProducts ] = useState([])
+    // const [ isLoading, setIsLoading ] = useState(true)
+
+    // useEffect( async ()=>{
+    //     const response = await getItems();
+    //     setIsLoading(false)
+    //     setProducts( response )
+    // }, [])
+
+    // console.log(products)
     
     return (
         <>  
@@ -8,8 +23,7 @@ export const Home = () => {
 
             <h1 className="title">Todos los productos</h1>
                 <div className="grid">
-                    <ProductList type='instrumento'/>
-                    <ProductList type='efecto'/>
+                    
                 </div>
             </div>
         </>

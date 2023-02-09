@@ -14,7 +14,7 @@ export const ProductCard = (
         handleButton 
     }) =>
     isInCart ? (
-            <div className='card'>
+            <div className='card animate__animated animate__fadeIn'>
                 <i className="ri-close-fill card__delete" onClick={() => handleButton( name )}></i>
 
                 <img className="card__image" src={ image } alt={ name } />
