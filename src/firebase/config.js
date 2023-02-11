@@ -1,10 +1,4 @@
-
-// Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
-
-import {collection, getFirestore, getDocs, getDoc, doc, query, where } from 'firebase/firestore'
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -17,33 +11,4 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
-const app = initializeApp(firebaseConfig);
-
-// Establece la conexión con la base
-const db = getFirestore( app )
-
-//Referencia a la colección
-const productsCollectionRef = collection( db, 'products' )
-
-export const getItems = async () => {
-    const snapshot = await getDocs( productsCollectionRef );
-    const docsData = snapshot.docs.map((doc) => {
-        return {...doc.data(), id: doc.id }
-    })
-    return ( docsData )
-}
-
-export const getItemsByType = async ( type ) => {
-    const question = query(productsCollectionRef, where('type', '==', type))
-    const snapshot = await getDocs( question );
-    const docsData = snapshot.docs.map((doc) => {
-        return {...doc.data(), id: doc.id }
-    })
-    return ( docsData )
-}
-
-export const getItem = async ( productId ) => {
-    const productRef = doc( productsCollectionRef, productId )
-    const snapshot = await getDoc( productRef )
-    return {...snapshot.data(), id: snapshot.id}
-}
+export const app = initializeApp(firebaseConfig);

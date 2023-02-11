@@ -303,12 +303,7 @@ $radius: .4rem;
     width: 40%;
 }
 
-.button--container {
-    display: flex;
-    gap: 10px;
-    margin: 15px 0;
-    
-}
+
 .button {
     height: 55px;
     min-width: 150px;
@@ -320,6 +315,14 @@ $radius: .4rem;
     border-radius: $radius;
     cursor: pointer;
     transition: all .2s ease-in-out;
+    &__container {
+        display: flex;
+        gap: 10px;
+        margin: 15px 0;
+        &--col {
+            flex-direction: column;
+        }
+    }
 }
 
 
@@ -402,3 +405,31 @@ $radius: .4rem;
 }
 
 
+
+
+
+
+.loader {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    display: inline-block;
+    border-top: 3px solid #343434;
+    border-right: 3px solid transparent;
+    box-sizing: border-box;
+    animation: rotation 1s linear infinite;
+    &__container {
+        
+        @include size(90vh, 100%);
+        @include flex;
+    }
+  }
+  
+  @keyframes rotation {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  } 

@@ -1,4 +1,4 @@
-export const navData = [
+export const navData = [ 
     {
         type: 'guitarras',
         text: 'Guitarras'
@@ -6,6 +6,9 @@ export const navData = [
     {
         type: 'efectos', 
         text: 'Pedales de efecto'
+    },
+    {
+        type: 'amplificadores', 
+        text: 'Amplificadores'
     }
-
 ]

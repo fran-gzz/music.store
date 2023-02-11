@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react"
 import { useParams } from "react-router-dom"
-import { getItems, getItemsByType } from "../../firebase/config"
+import { getItems, getItemsByType } from "../../firebase"
 
-import { ProductCard } from "../../components"
+import { ProductCard, Loader } from "../../components"
 
 export const ProductsList = () => {
 
@@ -30,19 +30,20 @@ export const ProductsList = () => {
     }, [typeID])
 
 
+    
+        
+     
 
     return (
-    <>  
-    
+    <>
         {
             isLoading 
-            ? <h1 className="title animate__animated animate__fadeIn">Cargando...</h1>
+            ? <Loader />
             :    
             <div className="grid animate__animated animate__fadeIn">
                 {products.map( product => <ProductCard key={product.id} {...product} />)}
             </div>
         }
-    
     </>
     )
 }

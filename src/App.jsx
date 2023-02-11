@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import { Navbar } from "./components";
-import { Home, Guitars, Effects, ProductsList, ProductDetails, Cart } from "./screens";
+import { ProductsList, ProductDetails, Cart } from "./screens";
 import ScrollToTop from './helpers/ScrollToTop';
 import { Provider } from './context';
 

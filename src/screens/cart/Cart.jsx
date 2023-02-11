@@ -10,7 +10,7 @@ export const Cart = () => {
 		<div className="cart animate__animated animate__fadeIn">
 			<div className="cart__grid">
 				{cart.map( prod => (
-					<ProductCard key={ prod.id }  handleButton={ removeFromCart } {...prod } isInCart/>
+					<ProductCard key={ prod.id } handleButton={ removeFromCart } {...prod } isInCart/>
 				))}
 			</div>
 			<div className="resume">
@@ -25,7 +25,7 @@ export const Cart = () => {
 					<p className="resume__text">
 						Precio total: ${ totalPrice().toFixed(2) }
 					</p>
-					<div className="button--container w-100">
+					<div className="button__container w-100">
 			  			<button className="button button--primary">Finalizar compra</button>
 						<button className="button button--secondary" onClick={() => cleanCart()}>
 							Vaciar carrito

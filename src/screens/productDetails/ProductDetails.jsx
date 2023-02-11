@@ -1,11 +1,11 @@
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom"
+import { useParams, Link } from "react-router-dom"
 
 import { useCartContext } from "../../context";
-import { ItemCount, ShippingWidget } from '../../components';
+import { ItemCount, ShippingWidget, Loader } from '../../components';
 
 
-import { getItem } from "../../firebase/config";
+import { getItem } from "../../firebase";
 
 export const ProductDetails = () => {
     
@@ -13,17 +13,21 @@ export const ProductDetails = () => {
 
     const [ product, setProduct ] = useState([])
     const [ isLoading, setIsLoading ] = useState(true)
+    
 
     useEffect(()=> {
         setIsLoading( true )
-        const fetch = () => {
-            getItem(id).then(response => setProduct(response)).finally( () => setIsLoading(false))
-        }
-        fetch()
+        
+        getItem(id).then(response => setProduct(response)).finally( () => setIsLoading(false))
+        
     }, [id])
 
     const { addToCart } = useCartContext();
-    const onAdd = ( qty ) => addToCart({ ...product, quantity: qty })
+
+    const onAdd = ( qty ) => {
+        addToCart({ ...product, quantity: qty })
+        
+    }
     
 
     return (
@@ -31,7 +35,7 @@ export const ProductDetails = () => {
             {
 
                 isLoading 
-                ? <h1>Cargando...</h1>
+                ? <Loader />
                 :
                 <div className="product animate__animated animate__fadeIn">
                     <div className="product__image">
@@ -45,9 +49,10 @@ export const ProductDetails = () => {
                             ${product.price}
                         </p>
                         
-                        <ShippingWidget shipping={product.shipping}/> 
+                        <ShippingWidget shipping={product.shipping}/>
+                            
                         <ItemCount stock={ product.stock } onAdd={ onAdd }/>
-
+                        
                         <h2 className="product__subtitle">
                             Descripción
                         </h2>
