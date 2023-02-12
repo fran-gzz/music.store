@@ -1,14 +1,16 @@
 import { useState } from "react"
-import { Link } from "react-router-dom";
+import { Button, ButtonContainer } from "../buttons/Button";
+
+
 export const ItemCount = ({ stock = 0, initialState = 1, onAdd }) => {
 
     const [ count, setCount ] = useState( initialState );
     const [ isInCount, setIsInCount ] = useState( true )
 
-    const sumar = () => setCount( count < stock ? count + 1 : count )
-    const restar = () => setCount( count > initialState ?  count - 1 : count )
+    const sumar = () => setCount( count < stock ? count + 1 : count );
+    const restar = () => setCount( count > initialState ?  count - 1 : count );
     
-    const handleButton = () => {
+    const addToCart = () => {
         onAdd( count )
         setIsInCount( false )
     }
@@ -35,20 +37,13 @@ export const ItemCount = ({ stock = 0, initialState = 1, onAdd }) => {
                                 <label className="count__label"> {count} </label>
                                 <button onClick={sumar} className='count__button'> + </button>
                             </div>
-                            <button className="button button--primary w-100" onClick={ handleButton }>
-                                Añadir al carrito
-                            </button>
+                            <Button color="primary" text="Añadir al carrito" action={ addToCart }/>
                         </>
                         : 
-                        <div className="button__container button__container--col">
-                            <Link to='/'>
-                                <button className="button button--secondary w-100">Seguir comprando</button>
-                            </Link>
-                            <Link to='/cart'>
-                                <button className="button button--primary w-100">Ir al carrito</button>
-                            </Link>
-                        </div>
-
+                        <ButtonContainer type="col">
+                            <Button type="link" direction="/" color="secondary" text="Sigue navegando"/>
+                            <Button type="link" direction="/cart" text="Ir al carrito"/>
+                        </ButtonContainer>
                     }
                     
                 </div>
