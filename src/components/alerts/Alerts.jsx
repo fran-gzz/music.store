@@ -1,12 +1,30 @@
 import Swal from "sweetalert2"
 
-export const showSuccessToast = () => {
+export const showSuccessToast = ( message ) => {
     Swal.fire({
-        position: 'center',
-        title: 'Producto agregado',
+        toast: true,
+        position: 'bottom-right',
+        title: message,
+        showConfirmButton: false,
         icon: 'success',
-        timer: 900,
+        timer: 1800,
         timerProgressBar: true,
+        background: '#343434',
+        color: '#fff'
+    });
+}
+
+export const showUpdatedToast = ( message ) => {
+    Swal.fire({
+        toast: true,
+        position: 'bottom-right',
+        title: message,
+        showConfirmButton: false,
+        icon: 'info',
+        timer: 1800,
+        timerProgressBar: true,
+        background: '#343434',
+        color: '#fff'
     });
 }
 
@@ -15,5 +33,10 @@ export const showErrorToast = ( message ) => {
         title: 'Error',
         text: message,
         icon: 'error',
+        timer: 1800,
+        timerProgressBar: true,
+        showConfirmButton: false,
+        confirmButtonColor: '#363fe6',
     });
 }
+

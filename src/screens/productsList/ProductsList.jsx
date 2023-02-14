@@ -29,11 +29,6 @@ export const ProductsList = () => {
         fetch()
     }, [typeID])
 
-
-    
-        
-     
-
     return (
     <>
         {
@@ -41,7 +36,7 @@ export const ProductsList = () => {
             ? <Loader />
             :    
             <div className="grid animate__animated animate__fadeIn">
-                {products.map( product => <ProductCard key={product.id} {...product} />)}
+                { products.map( product => <ProductCard key={product.id} {...product} />) }
             </div>
         }
     </>

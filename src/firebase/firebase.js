@@ -1,4 +1,4 @@
-import {collection, getFirestore, getDocs, getDoc, doc, query, where } from 'firebase/firestore'
+import { collection, getFirestore, getDocs, getDoc, doc, query, where, addDoc } from 'firebase/firestore'
 import { app } from './config'
 
 // Establece la conexión con la base de datos
@@ -31,4 +31,13 @@ export const getItem = async ( productId ) => {
     const productRef = doc( productsCollectionRef, productId )
     const snapshot = await getDoc( productRef )
     return {...snapshot.data(), id: snapshot.id}
+}
+
+
+// añadir un documento
+const queryCollection = collection( db, 'orders' )
+
+export const addOrder = async ( order ) => {
+    const docRef = await addDoc( queryCollection, order )
+    return docRef.id
 }

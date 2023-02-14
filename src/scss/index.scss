@@ -94,7 +94,7 @@ $radius: .4rem;
 
 .container {
     @include container;
-    padding-top: 50px;
+    padding-top: 5rem;
 }
 
 
@@ -245,7 +245,6 @@ $radius: .4rem;
 
 .product {
     background-color: #fff;
-    margin: 20px 0;
     border-radius: $radius;
     overflow: hidden;
     display: grid;
@@ -348,7 +347,6 @@ $radius: .4rem;
 
 .cart {
     @include flex(column, center, flex-start);
-    margin-top: 50px;
     position: relative;
     gap: 10px;
     @include responsive( tablet ) {
@@ -369,21 +367,15 @@ $radius: .4rem;
     }
 
     &__empty {
-        min-height: 40vh;
-        width: 60%;
-        margin: 0 auto;
-        box-shadow: $shadow;
-        border-radius: $radius;
-        background-color: #fff;
-        margin-top: 50px;
-        padding: 2rem 0;
+        margin: 110px auto;
+        padding: 0 10rem;
         @include flex(column);    
     }
     
 }
 
 .resume {
-    top: 100px;
+    top: 5rem;
     right: 0;
     position: sticky;
     border-radius: $radius;
@@ -420,7 +412,6 @@ $radius: .4rem;
     box-sizing: border-box;
     animation: rotation 1s linear infinite;
     &__container {
-        
         @include size(90vh, 100%);
         @include flex;
     }
@@ -434,3 +425,55 @@ $radius: .4rem;
       transform: rotate(360deg);
     }
   } 
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 50%;
+    margin: 0 auto;
+    padding: 30px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+  
+    input {
+      margin-bottom: 20px;
+      padding: 10px;
+      width: 100%;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+  
+    button {
+      padding: 10px 20px;
+      background-color: lightblue;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+  
+      &:hover {
+        background-color: blue;
+      }
+    }
+  
+    p {
+      color: red;
+      font-size: 12px;
+      margin-bottom: 20px;
+    }
+  }
+  

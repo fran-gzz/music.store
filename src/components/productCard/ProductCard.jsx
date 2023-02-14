@@ -1,18 +1,7 @@
 import { Link } from "react-router-dom"
-import { ShippingWidget } from "../../components"
+import { ShippingWidget, Button } from "../../components"
 
-export const ProductCard = (
-    { 
-        id, 
-        name, 
-        price, 
-        image,
-        shipping,
-        stock,
-        quantity,
-        isInCart = false,
-        handleButton 
-    }) =>
+export const ProductCard = ({ id, name, price, image, shipping, stock, quantity, isInCart = false, handleButton }) =>
     isInCart ? (
             <div className='card animate__animated animate__fadeIn'>
                 <i className="ri-close-fill card__delete" onClick={() => handleButton( name )}></i>
@@ -33,9 +22,7 @@ export const ProductCard = (
 
                 <ShippingWidget shipping={ shipping }/>
 
-                <Link className="button button--primary" to={`/producto/${ id }`}>
-                    Ver producto
-                </Link>
+                <Button type="link" text="Ver producto" direction={`/producto/${ id }`}/>
             </div>
         ) : (
             <Link className={stock > 0 ? 'card' : 'card card--nostock'} to={`/producto/${ id }`}>

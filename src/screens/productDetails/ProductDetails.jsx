@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom"
 
-import { useCartContext } from "../../context";
+import { useAppContext } from "../../context";
 import { ItemCount, ShippingWidget, Loader } from '../../components';
 
 
@@ -20,7 +20,7 @@ export const ProductDetails = () => {
         getItem( id ).then( response => setProduct( response )).finally( () => setIsLoading( false ))
     }, [ id ])
 
-    const { addToCart } = useCartContext();
+    const { addToCart } = useAppContext();
 
     const onAdd = ( qty ) => addToCart({ ...product, quantity: qty })
 

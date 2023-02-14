@@ -1,9 +1,11 @@
 import { useState } from "react"
 import { Link, NavLink } from "react-router-dom"
 import { CartWidget } from "../../components"
+import { useAppContext } from "../../context"
 import { navData } from "../../data"
 
 export const Navbar = () => {    
+    const { removeUser, user } = useAppContext();
 
     const [ toggle, setToggle ] = useState(false);
 
@@ -20,6 +22,7 @@ export const Navbar = () => {
                     { navData.map(( data, id ) => (
                         <NavLink 
                             key={ id }
+                            onClick={ handleClick }
                             className={({ isActive }) => isActive ? "navbar__link navbar__link--active" : "navbar__link "}
                             to={`/${ data.type }`}
                         >
@@ -27,8 +30,13 @@ export const Navbar = () => {
                         </NavLink>
                     ))}
                 </ul>
-                <div className="navbar__main">
-                    <a className="navbar__cta" href="#">Iniciar Sesión</a>
+                <div className="navbar__main"> 
+                    {
+                        user.isLoggedIn 
+                        ? <Link className="navbar__cta" to='/login' onClick={ () => removeUser() }> Cerrar Sesión </Link>
+                        : <Link className="navbar__cta" to='/login'> Iniciar Sesión </Link>
+                    }
+                    
                     <CartWidget />
                     <i className={ toggle ? 'ri-close-line' : 'ri-menu-line'} id="menu-button" onClick={ handleClick }></i>
                 </div>
