@@ -1,4 +1,4 @@
-# music.sotre
+# music.store
 
 Music.store es un proyecto realizado para el curso de React JS en coderhouse.
 Este proyecto está creado utilizando vite + react
