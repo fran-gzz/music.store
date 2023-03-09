@@ -1,0 +1,73 @@
+.card {
+    overflow: hidden;
+    cursor: pointer;
+    border-radius: $radius;
+    padding: 1rem;
+    background-color: #fff;
+    color: $text-color;
+    position: relative;
+    border: $border;
+
+    @include responsive( desktop ) {
+        transition: all .2s ease-in-out;
+        &:hover { box-shadow: $shadow; }
+    }
+    &__price {
+        color: $text-color;
+        font-size: 1.1rem;
+        font-weight: 500;
+    }    
+    &__title {
+        font-weight: 400;
+        font-size: .8rem;
+        padding-top: .4rem;
+    }
+    
+    &__shipping {
+        margin: 10px 0;
+        color: #00a650;
+        gap: 10px;
+        font-size: .8rem;
+        @include flex( row, start, center );
+        &--icons {
+            font-size: 1.4em;
+            @include flex;
+        }
+    }
+    &__image {
+        border-bottom: 2px solid rgba($color: #000, $alpha: .1);
+        object-fit: contain;
+        padding-bottom: 2rem;
+        margin-bottom: 1rem;
+        @include size( 220px, 100% );
+    }
+    &--nostock {
+        position: relative;
+        &::after {
+            position: absolute;
+            height: 100%;
+            width: 100%;
+            background-color: rgba($color: #fff, $alpha: .7);
+            content: 'SIN STOCK';
+            font-size: 1.4em;
+            @include flex;
+            top: 0;
+            left: 0;
+        }
+    }
+    &__delete{
+        
+        font-size: 2em;
+        position: absolute;
+        color: $primary;
+        background-color: $black;
+        padding: .5rem;
+        top: 0;
+        right: 0;
+        border-bottom-left-radius: $radius;
+    }
+    &__quantity {
+        font-size: 1em;
+        margin: 10px 0;
+    }
+}

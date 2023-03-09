@@ -1,0 +1,96 @@
+.profile__container {
+    min-height: 90vh;
+    @include size;
+  	@include container;
+    @include flex(column, center, center );
+    @include responsive ( desktop ) {
+        flex-direction: row;
+        justify-content: start;
+        align-items: flex-start;
+    }
+    gap: 1rem;
+}
+
+.profile {
+    top: 3rem;
+    background-color: #fff;
+    @include responsive ( desktop ) {
+        position: sticky;
+    }
+    padding: 1rem 0;
+    &__header {
+        @include flex( column, center, center );
+        width: 300px;
+        border-radius: $radius;
+        background-color: $black;
+        padding: 10px;
+        &--icon {
+            border-radius: $radius;
+            font-size: 4rem;
+            
+            background-color: $black;
+            color: $primary ;
+            margin: 10px 0;
+        }
+        &--title {
+            font-size: 2em;
+            color: $primary;
+            text-transform: capitalize;
+        }
+    }
+    &__body {
+        margin: 20px 0;
+        display: flex;
+        flex-direction: column;
+
+        gap: 15px;
+        &--item {
+            font-size: .8rem;
+            font-weight: 800;
+            color: $black;
+            & span {
+                font-weight: 600;
+            }
+        }
+    }
+}
+.orders {
+    position: relative;
+    @include size;
+    @include responsive ( desktop ) {
+        top: 3.5rem;
+    }
+    padding: 1rem;
+    &__title {
+        color: $black;
+        text-align: center;
+        font-weight: 600;
+    }
+}
+
+
+.table { 
+    margin-top: 20px;
+    width: 100%;
+    &__head {
+        background-color: $black;
+        font-weight: bold;        
+        th {
+            padding: .8rem 1rem;
+            border: $border;
+            border-radius: $radius;
+            color: #fff;
+        }
+    }
+  
+    &__row {
+        background-color: #f2f2f2;
+        text-align: center;
+    }
+   
+    &__cell {
+        padding: .8rem 1rem;
+        border: $border;
+        border-radius: $radius;
+    }
+}

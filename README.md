@@ -4,6 +4,14 @@ Music.store es un proyecto realizado para el curso de React JS en coderhouse.
 Este proyecto está creado utilizando vite + react
 
 [Link del deploy](https://musicstore-reactjs.netlify.app/)
+
+## Info del proyecto
+
+* Uso de custom hooks para separar la lógica de la vista.
+* Renderizado condicional.
+* Metodología BEM para los estilos.
+* Filtrado en la obtención de los datos provenientes de Firestore.
+
 ## Instalación
 
 Descarga el repositorio para verlo localmente

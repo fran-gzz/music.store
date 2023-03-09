@@ -1,0 +1,44 @@
+
+.cart {
+    height: 100%;
+    @include flex(column, center, flex-start);
+    position: relative;
+    gap: 10px;
+    width: 100%;
+    @include responsive( tablet ) {
+        flex-direction: row;
+    }
+}
+.empty {
+    min-height: 85vh;
+    @include flex(column);
+    @include responsive( tablet ) {
+        padding: 0 10rem;
+        
+    }
+}
+
+.resume {
+    top: 65px;
+    right: 0;
+    position: sticky;
+    border-radius: $radius;
+    border: 2px solid rgba($color: #343434, $alpha: .2);
+    padding: 1rem;
+    width: 100%;    
+
+    @include responsive( tablet ){
+        width: 50%;
+    }
+
+    &__title {
+        font-size: 1.8rem;
+        font-weight: 500;
+        padding-bottom: 1rem;
+        color: $text-color;
+    }
+    &__text {
+        margin-bottom: 20px;
+
+    }
+}

@@ -8,4 +8,4 @@ export const ShippingWidget = ({ shipping = false }) =>
         </div>
         <p>Envío Gratis</p>
     </div>
-) : <br />;
+) : null;

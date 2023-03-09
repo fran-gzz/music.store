@@ -1,0 +1,58 @@
+.form__container {
+	background-color: $black;
+  	min-height: 90vh;
+  	width: 100%;
+  	@include flex;
+}
+
+
+.form {
+	border-radius: $radius;
+	box-shadow: $shadow;
+    background-color: #fff;
+    width: 90%;
+	max-width: 1100px;
+    padding: 2rem;
+    display: grid;
+	gap: 15px;
+	margin: 5rem auto;
+	grid-template-areas: 
+		'name phone'
+		'email email'
+		'confirmEmail confirmEmail'
+		'password password'
+		'error error'
+		'button button'
+	;
+	@include responsive( desktop ) {
+		width: 100%;
+	}
+	&__control {
+		@include flex(column, center, flex-start);
+		&--label {
+			font-size: .8em;	
+			font-weight: 600;
+			color: $black;
+			padding: .5rem 0;
+		}
+		&--input {
+			padding: .8rem 10px;
+      		width: 100%;
+      		border: 2px solid rgba($color: #343434, $alpha: .2 );
+      		border-radius: $radius;
+		}
+	}
+	
+}
+
+#input-name { grid-area: name; }
+#input-phone { grid-area: phone; }
+#input-email { grid-area: email; }
+#input-confirmEmail { grid-area: confirmEmail; }
+#input-password { grid-area: password; }
+#input-error {
+	grid-area: error;
+	color: red;
+    font-size: 1em;
+}
+#input-button { grid-area: button; }

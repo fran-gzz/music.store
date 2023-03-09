@@ -10,7 +10,8 @@ export const showSuccessToast = ( message ) => {
         timer: 1800,
         timerProgressBar: true,
         background: '#343434',
-        color: '#fff'
+        color: '#fff',
+        iconColor: '#FBC22B'
     });
 }
 
@@ -24,7 +25,8 @@ export const showUpdatedToast = ( message ) => {
         timer: 1800,
         timerProgressBar: true,
         background: '#343434',
-        color: '#fff'
+        color: '#fff',
+        iconColor: '#FBC22B'
     });
 }
 

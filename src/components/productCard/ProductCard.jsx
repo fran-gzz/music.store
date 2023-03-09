@@ -1,38 +1,22 @@
 import { Link } from "react-router-dom"
-import { ShippingWidget, Button } from "../../components"
+import { ShippingWidget, Delete } from "../../components"
 
-export const ProductCard = ({ id, name, price, image, shipping, stock, quantity, isInCart = false, handleButton }) =>
-    isInCart ? (
-            <div className='card animate__animated animate__fadeIn'>
-                <i className="ri-close-fill card__delete" onClick={() => handleButton( name )}></i>
+export const ProductCard = ({ product, isInCart = false }) => {
+    return (
+        <div className={ product.stock > 0 ? 'card' : 'card card--nostock' }>
+            { isInCart ? <Delete name={ product.name }/> : null }
+            <Link  to={`/producto/${ product.id }`}>
 
-                <img className="card__image" src={ image } alt={ name } />
+                <img className="card__image" src={ product.image } alt={ product.name } />
 
-                <p className="card__price">
-                    ${ price }
-                </p>
+                <p className="card__price"> ${ product.price } </p>
 
-                <h2 className="card__title">
-                    { name }
-                </h2>
+                <h2 className="card__title"> { product.name } </h2>
 
-                <p className="card__quantity">
-                    Cantidad: { quantity }
-                </p>
-
-                <ShippingWidget shipping={ shipping }/>
-
-                <Button type="link" text="Ver producto" direction={`/producto/${ id }`}/>
-            </div>
-        ) : (
-            <Link className={stock > 0 ? 'card' : 'card card--nostock'} to={`/producto/${ id }`}>
-                <img className="card__image" src={ image } alt={ name } />
-                <p className="card__price">
-                    ${ price }
-                </p>
-                <h2 className="card__title">
-                    { name }
-                </h2>
-                <ShippingWidget shipping={ shipping } />
+                { isInCart ? <p className="card__quantity"> Cantidad: { product.quantity } </p> : null }
+            
+                <ShippingWidget shipping={ product.shipping }/>
             </Link>
-        );
+        </div>
+    )
+}

@@ -1,0 +1,46 @@
+
+
+.product {
+    border-radius: $radius;
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-areas: 'image' 'info';
+    min-height: 80vh;
+    @include responsive( tablet ) {
+        grid-template-columns: 1fr 1fr;
+        grid-template-areas: 'image info info';
+        align-items: center;
+    }
+    &__image {
+        grid-area: image;
+        @include flex;
+        img {
+            object-fit: contain;
+            @include size( 300px, 100% );
+            @include responsive( tablet ) {
+                @include size( 450px, 100% );
+            }
+        }
+    }
+    &__info { grid-area: info; }
+    &__title {
+        color: $text-color;
+        font-size: 2em;
+        margin: 20px 0 5px 0;
+        @include responsive( tablet ) {
+            margin: 0;
+            margin-bottom: 10px;
+            font-size: 3em;
+        }
+    }
+    &__price {
+        font-size: 1.6em;
+        margin-bottom: 10px;
+        
+    }
+    &__subtitle {
+        margin-bottom: 20px;
+    }
+    
+}

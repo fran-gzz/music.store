@@ -1,54 +1,35 @@
-import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom"
+import { useProduct } from "../../hooks";
+import { ItemCount, ShippingWidget, Loader, Animated } from '../../components';
 
-import { useAppContext } from "../../context";
-import { ItemCount, ShippingWidget, Loader } from '../../components';
+export const ProductDetails = () => {    
 
-
-import { getItem } from "../../firebase";
-
-export const ProductDetails = () => {
-    
     const { id } = useParams();
-
-    const [ product, setProduct ] = useState([])
-    const [ isLoading, setIsLoading ] = useState(true)
-    
-
-    useEffect(()=> {
-        setIsLoading( true )
-        getItem( id ).then( response => setProduct( response )).finally( () => setIsLoading( false ))
-    }, [ id ])
-
-    const { addToCart } = useAppContext();
-
-    const onAdd = ( qty ) => addToCart({ ...product, quantity: qty })
+    const { isLoading, product, onAdd } = useProduct({ id })
 
     return (
-        <>
-            {
-                isLoading 
-                ? <Loader />
-                :
-                <div className="product animate__animated animate__fadeIn">
-                    <div className="product__image">
-                        <img src={product.image} alt={product.name} />
-                    </div>
-                    <div className="product__info">
-                        <h1 className="product__title"> {product.name} </h1>
-                        
-                        <p className="product__price"> ${product.price} </p>
-
-                        <ShippingWidget shipping={product.shipping}/>
-                            
-                        <ItemCount stock={ product.stock } onAdd={ onAdd }/>
-
-                        <h2 className="product__subtitle"> Descripción </h2>
-
-                        <p className="product__description"> {product.description} </p>
-                    </div>
+        isLoading 
+        ? <Loader />
+        :
+        <Animated>
+            <article className="product">
+                <div className="product__image">
+                    <img src={product.image} alt={product.name} />
                 </div>
-            }
-        </>
+                <div className="product__info">
+                    <h1 className="product__title"> {product.name} </h1>
+                    
+                    <p className="product__price"> ${product.price} </p>
+
+                    <ShippingWidget shipping={product.shipping}/>
+                        
+                    <ItemCount stock={ product.stock } onAdd={ onAdd }/>
+
+                    <h2 className="product__subtitle"> Descripción </h2>
+
+                    <p className="product__description"> {product.description} </p>
+                </div>
+            </article>    
+        </Animated>
     )
 }

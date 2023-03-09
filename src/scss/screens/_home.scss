@@ -1,0 +1,26 @@
+.header {
+    overflow: hidden;
+    border-radius: $radius;
+    position: relative;
+    display: flex;
+    justify-content: end;
+    align-items: flex-end;
+    &__img {
+        @include size( 40vh, 100% );
+        object-fit: cover;
+        
+    }
+    &__title {
+        font-weight: 800;
+        gap: 5px;
+        @include flex;
+        bottom: 5px;
+        
+        right: 10px;
+        font-size: 1rem;
+        color: $text-color;
+        position: absolute;
+        
+        
+    }
+}

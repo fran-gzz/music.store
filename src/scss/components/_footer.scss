@@ -1,0 +1,57 @@
+.footer {
+    background-color: #181818;
+    color: #ccc;
+    &__container {
+        
+        @include container;
+        
+        @include flex(column, space-between, flex-start);
+        gap: 30px;
+        padding: 1rem;
+        @include responsive(tablet){
+            flex-direction: row;
+        }
+    }
+    &__title {
+        font-weight: 400;
+        color: #fff;
+        text-transform: uppercase;
+        margin-bottom: 1rem;
+        font-size: .8rem;
+    }
+    
+    &__about {
+        @include responsive(tablet){
+            width: 70%;
+        }
+        p {
+            margin-bottom: 1rem;
+        }
+        a {
+            
+            text-decoration:underline;
+            color: $primary;
+        }
+    }
+    &__links {
+        @include responsive(tablet){
+            width: 30%;
+        }
+        ul {    
+            list-style-type: none;
+            li {
+                margin: 1rem 0;
+            }
+        }
+    }
+    &__bottom {
+        background-color: #111;
+        @include flex;
+        font-size: 1em;
+        padding: 1rem 0;
+        a:hover {
+            color: $primary;
+        }   
+    }
+
+}

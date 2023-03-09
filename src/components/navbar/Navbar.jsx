@@ -4,14 +4,16 @@ import { CartWidget } from "../../components"
 import { useAppContext } from "../../context"
 import { navData } from "../../data"
 
+
 export const Navbar = () => {    
-    const { removeUser, user } = useAppContext();
+    const { user } = useAppContext();
 
     const [ toggle, setToggle ] = useState(false);
 
     const handleClick = () => setToggle( !toggle )
 
     return (
+        
         <header className="navbar"> 
             <nav className="navbar__container">
                 <Link className="navbar__brand" to='/'>
@@ -19,12 +21,19 @@ export const Navbar = () => {
                     <span>music.store</span>
                 </Link>
                 <ul className={`navbar__links ${ toggle ? 'navbar__links--open' :'' }`}>
+                    <NavLink
+                        onClick={ handleClick }
+                        className={({ isActive }) => isActive ? "navbar__link navbar__link--active" : "navbar__link "}
+                        to='/'
+                    >
+                        Todos los productos
+                    </NavLink>
                     { navData.map(( data, id ) => (
                         <NavLink 
                             key={ id }
                             onClick={ handleClick }
                             className={({ isActive }) => isActive ? "navbar__link navbar__link--active" : "navbar__link "}
-                            to={`/${ data.type }`}
+                            to={`/category/${ data.type }`}
                         >
                             { data.text }
                         </NavLink>
@@ -33,8 +42,11 @@ export const Navbar = () => {
                 <div className="navbar__main"> 
                     {
                         user.isLoggedIn 
-                        ? <Link className="navbar__cta" to='/login' onClick={ () => removeUser() }> Cerrar Sesión </Link>
-                        : <Link className="navbar__cta" to='/login'> Iniciar Sesión </Link>
+                        ? <Link className="navbar__profile" to='/auth/profile'>
+                            <p className="navbar__profile--name">{user.data.name}</p>
+                            <i className="ri-user-fill navbar__profile--icon"></i>
+                        </Link>
+                        : <Link className="navbar__cta" to='/auth/login'> Iniciar Sesión </Link>
                     }
                     
                     <CartWidget />

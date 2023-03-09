@@ -1,0 +1,41 @@
+.button {
+    min-width: 150px;
+    @include size(55px, 100%);
+    padding: 1rem;
+    @include flex;
+    border: none;
+    border-radius: $radius;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all .2s ease-in-out;
+    font-size: .8rem;
+    &__container {
+        display: flex;
+        gap: 10px;
+        margin: 15px 0;
+        &--col {
+            flex-direction: column;
+        }
+        &--row {
+            flex-direction: row;
+        }
+    }
+}
+
+
+.button--primary {
+    background-color: $primary;
+     color: $black;
+    &:hover { color: $primary; background-color: $black; }
+}
+
+.button--secondary {
+    background-color: inherit;
+    border: 2px solid rgba($color: #343434, $alpha: .2);
+    color: $black;
+    &:hover {
+        
+        background-color: $black;
+        color: $primary;
+    }
+}

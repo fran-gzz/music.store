@@ -61,5 +61,4 @@ export const Provider = ({ children }) => {
             { children }
         </Context.Provider>
     )
-    
 }

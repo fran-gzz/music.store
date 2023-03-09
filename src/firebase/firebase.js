@@ -41,3 +41,13 @@ export const addOrder = async ( order ) => {
     const docRef = await addDoc( queryCollection, order )
     return docRef.id
 }
+
+export const getOrders = async () => {
+    const snapshot = await getDocs( queryCollection );
+    const docsData = snapshot.docs.map( (doc) => {
+        return {...doc.data(), id: doc.id}
+    })
+    return docsData
+}
+
+

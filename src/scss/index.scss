@@ -7,34 +7,7 @@
 
 
 
-$breakpoints: (
-    tablet: 768px,
-    desktop: 1000px
-);
-@mixin responsive( $breakpoint ) {
-    @media screen and ( min-width: map-get( $breakpoints, $breakpoint )) {
-        @content;
-    }
-}
 
-@mixin flex( $dir: row, $just: center, $align: center ) {
-    display: flex;
-    flex-direction: $dir;
-    justify-content: $just;
-    align-items: $align;
-}
-
-@mixin container( $max: 1200px ) {
-    width: 100%;
-    max-width: $max;
-    padding: 0 1rem;
-    margin: auto;
-}
-
-@mixin size( $height: 100%, $width: 100% ) {
-    height: $height;
-    width: $width;
-}
 
 html {
     font-family: 'Montserrat', sans-serif;
@@ -54,25 +27,18 @@ a {
 }
 
 body {
-    background-color: #ebebeb;
+    font-size: 62.5%
 }
 
 
-$primary: #343434;
+// $primary: #343434;
 
 
-$text-color: #343434;
-$accents: #363fe6;
-
-$shadow: 0px 0px 10px rgba( 0, 0, 0, .1 );
-
-$transition: all .5s ease-in-out;
-
-$radius: .4rem;
 
 
-@import './components/navbar';
-
+@import './utils';
+@import './components';
+@import './screens';
 
 
 
@@ -83,147 +49,24 @@ $radius: .4rem;
     color: $text-color;
 }
 
-.mt-15px {
-    margin-top: 15px;
-}
-
-
-
-
 
 
 .container {
-    @include container;
+    @include container(1100px);    
+    min-height: 80vh;
     padding-top: 5rem;
+    padding-bottom: 5rem;
 }
 
 
 .grid {
+    width: 100%;
     display: grid;
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(
+        auto-fit,
+        minmax( 220px, 1fr )
+    );
     gap: 10px;
-    width: 100%;
-    @include responsive( tablet ){
-        grid-template-columns: repeat(2, 1fr);
-    }
-    @include responsive( desktop ){
-        grid-template-columns: repeat(4, 1fr);
-    }    
-}
-
-
-
-
-
-
-.card {
-    overflow: hidden;
-    cursor: pointer;
-    border-radius: $radius;
-    padding: 1rem;
-    box-shadow: $shadow;
-    background-color: #fff;
-    color: $text-color;
-    position: relative;
-    @include responsive( desktop ) {
-        transition: all .2s ease-in-out;
-        &:hover { transform: scale(102%); }
-    }
-    &__price {
-        color: $text-color;
-        font-size: 1.6em;
-        font-weight: 500;
-    }    
-    &__title {
-        font-weight: 400;
-        font-size: 1em;
-        padding-top: .4rem;
-    }
-    
-    &__shipping {
-        margin: 10px 0;
-        color: #00a650;
-        gap: 10px;
-        font-size: .8em;
-        @include flex( row, start, center );
-        &--icons {
-            font-size: 1.4em;
-            @include flex;
-        }
-    }
-    &__image {
-        object-fit: contain;
-        @include size( 300px, 100% );
-        @include responsive(  tablet  ) { height: 300px; }
-        @include responsive(  desktop ) { height: 250px; }
-    }
-    &--nostock {
-        position: relative;
-        &::after {
-            position: absolute;
-            height: 100%;
-            width: 100%;
-            background-color: rgba($color: #fff, $alpha: .7);
-            content: 'SIN STOCK';
-            font-size: 1.4em;
-            @include flex;
-            top: 0;
-            left: 0;
-        }
-    }
-    &__delete{
-        font-size: 2em;
-        position: absolute;
-        color: $text-color;
-        right: 10px;
-    }
-    &__quantity {
-        font-size: 1em;
-        margin: 10px 0;
-    }
-
-}
-
- 
-
-
-
-
-
-
-.count {
-    margin: 20px 0;
-    width: 100%;
-    overflow:visible;
-    &__container {
-        overflow: hidden;
-        margin: 10px 0;
-        background-color: #fff;
-        border: 2px solid #c9c9c9;
-        border-radius: $radius;
-        display: flex;
-        flex-direction: row;
-        justify-content: start;
-        align-items: center;
-        box-shadow: $shadow;
-    }
-    &__label {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 100%;
-        height: 55px;
-        
-        
-    }
-    &__button {
-        background-color: #fff;
-        border: none;
-        cursor: pointer;
-        color: #055bbc;
-        font-size: 1.4em;
-        @include size (55px, 4.5rem);
-    }
 }
 
 
@@ -243,55 +86,6 @@ $radius: .4rem;
 
 
 
-.product {
-    background-color: #fff;
-    border-radius: $radius;
-    overflow: hidden;
-    display: grid;
-    padding: 2rem;
-    grid-template-columns: 1fr;
-    grid-template-areas: 'image' 'info';
-    min-height: 85vh;
-    @include responsive( tablet ) {
-        grid-template-columns: 1fr 1fr;
-        grid-template-areas: 'image info info';
-    }
-    &__image {
-        
-        grid-area: image;
-        @include flex;
-        img {
-            object-fit: contain;
-            @include size( 300px, 100% );
-            @include responsive( tablet ) {
-                @include size( 450px, 100% );
-            }
-        }
-    }
-    &__info {
-        grid-area: info;
-    }
-    &__title {
-        color: $text-color;
-        font-size: 2em;
-        margin: 20px 0 5px 0;
-        @include responsive( tablet ) {
-            margin: 0;
-            margin-bottom: 10px;
-            font-size: 3em;
-        }
-    }
-    &__price {
-        font-size: 1.6em;
-        margin-bottom: 10px;
-        
-    }
-    &__subtitle {
-        margin-bottom: 20px;
-    }
-    
-}
-
 .w-100 {
     width: 100%;
 }
@@ -303,128 +97,16 @@ $radius: .4rem;
 }
 
 
-.button {
-    min-width: 150px;
-    @include size(55px, 100%);
-    padding: 1rem;
-    @include flex;
-    border: none;
-    border-radius: $radius;
-    cursor: pointer;
-    transition: all .2s ease-in-out;
-    &__container {
-        display: flex;
-        gap: 10px;
-        margin: 15px 0;
-        &--col {
-            flex-direction: column;
-        }
-        &--row {
-            flex-direction: row;
-        }
-    }
-}
-
-
-.button--primary {
-    background-color: $accents;
-    color: #fff;
-    &:hover {
-        background-color: #3239b7;
-    }
-}
-.button--secondary {
-    background-color: #fff;
-    border: 1px solid $accents;
-    color: $accents;
-    &:hover {
-        color: #fff;
-        background-color: $accents;
-    }
-}
-
-
-
-.cart {
-    @include flex(column, center, flex-start);
-    position: relative;
-    gap: 10px;
-    @include responsive( tablet ) {
-        flex-direction: row;
-    }
-
-    &__grid {
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: 10px;
-        width: 100%;
-        @include responsive( tablet ){
-            grid-template-columns: repeat(2, 1fr);
-        }
-        @include responsive( desktop ){
-            grid-template-columns: repeat(3, 1fr);
-        }    
-    }
-
-    &__empty {
-        margin: 110px auto;
-        padding: 0 10rem;
-        @include flex(column);    
-    }
-    
-}
-
-.resume {
-    top: 5rem;
-    right: 0;
-    position: sticky;
-    border-radius: $radius;
-    background-color: #fff;
-    box-shadow: $shadow;
-    padding: 1rem;
-    %__container {
-        @include flex;
-    }
-    &__title {
-        font-size: 1.8rem;
-        font-weight: 500;
-        padding-bottom: 1rem;
-        color: $text-color;
-    }
-    &__text {
-        margin-bottom: 20px;
-
-    }
-}
 
 
 
 
 
 
-.loader {
-    width: 70px;
-    height: 70px;
-    border-radius: 50%;
-    display: inline-block;
-    border-top: 3px solid #343434;
-    border-right: 3px solid transparent;
-    box-sizing: border-box;
-    animation: rotation 1s linear infinite;
-    &__container {
-        @include size(90vh, 100%);
-        @include flex;
-    }
-  }
-  
-  @keyframes rotation {
-    0% {
-      transform: rotate(0deg);
-    }
-    100% {
-      transform: rotate(360deg);
-    }
-  } 
+
+
+
+
 
 
 
@@ -439,41 +121,4 @@ $radius: .4rem;
 
 
 
-  form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 50%;
-    margin: 0 auto;
-    padding: 30px;
-    border: 1px solid #ccc;
-    border-radius: 10px;
-  
-    input {
-      margin-bottom: 20px;
-      padding: 10px;
-      width: 100%;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-    }
-  
-    button {
-      padding: 10px 20px;
-      background-color: lightblue;
-      color: white;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-  
-      &:hover {
-        background-color: blue;
-      }
-    }
-  
-    p {
-      color: red;
-      font-size: 12px;
-      margin-bottom: 20px;
-    }
-  }
   
